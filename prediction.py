@@ -1,4 +1,4 @@
-import tensorflow as tf
+from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.applications import DenseNet201
@@ -7,20 +7,9 @@ import pickle
 from tensorflow.keras.models import Model
 from PIL import Image
 from PIL.Image import Image as PILImage
-from enum import Enum
 import io
 from typing import Union
-class ReturnType(Enum):
-    BYTES = 0
-    PILLOW = 1
-    NDARRAY = 2
 
-with open('tokenizer.pickle', 'rb') as handle:
-    tokenizer = pickle.load(handle)
-
-caption_model = tf.keras.models.load_model('model.h5')
-cnn_model = DenseNet201(weights='imagenet')
-fe = Model(inputs=cnn_model.input, outputs=cnn_model.layers[-2].output)
 
 def idx_to_word(integer,tokenizer):
     
@@ -33,16 +22,20 @@ def idx_to_word(integer,tokenizer):
 def predict_caption(data: Union[bytes, PILImage, np.ndarray], max_length = 34)-> Union[bytes, PILImage, np.ndarray]:
     
     if isinstance(data, PILImage):
-        return_type = ReturnType.PILLOW
         img = data
     elif isinstance(data, bytes):
-        return_type = ReturnType.BYTES
         img = Image.open(io.BytesIO(data))
     elif isinstance(data, np.ndarray):
-        return_type = ReturnType.NDARRAY
         img = Image.fromarray(data)
     else:
         raise ValueError("Input type {} is not supported.".format(type(data)))
+        
+    caption_model = load_model('model.h5')
+    cnn_model = DenseNet201(weights='imagenet')
+    fe = Model(inputs=cnn_model.input, outputs=cnn_model.layers[-2].output)
+    
+    with open('tokenizer.pickle', 'rb') as handle:
+        tokenizer = pickle.load(handle)
 
     newsize = (224, 224)
     img = img.resize(newsize)
