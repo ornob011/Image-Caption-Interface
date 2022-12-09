@@ -18,7 +18,7 @@ def hello():
             return
         file = request.files['file']
         image = file.read()
-        caption= predict_caption(image)
+        caption = predict_caption(image)
         uri = show(file)
 
 
