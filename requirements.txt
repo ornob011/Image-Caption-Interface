@@ -4,3 +4,4 @@ Pillow
 tensorflow-cpu
 pybase64
 gunicorn
+uvicorn
