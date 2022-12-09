@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template,request, flash, send_file, url_for, redirect
+from flask import Flask, render_template,request
 from display_image import show
 from prediction import predict_caption
 
