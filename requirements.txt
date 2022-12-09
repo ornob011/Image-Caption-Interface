@@ -1,6 +1,5 @@
 Flask
 numpy
-pandas
 Pillow
 tensorflow
 pybase64
