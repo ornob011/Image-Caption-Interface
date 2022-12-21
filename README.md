@@ -37,23 +37,24 @@ To use this application, follow these steps:
    python app.py
    ```
 2. Look for the output of the terminal. The web link will be generated at [http://localhost:5000/](http://localhost:5000/)
+   
 3. Click on the link or copy-paste the link into the browser. An interface will come up.
    </br></br>
    ![interface](assets/interface.png)
    
-   <p style="text-align:center">Web Interface</p>
+   <p style="text-align:center">Figure: Web Interface</p>
 
 4. Upload a image into the submit form of the web page.
 
 5. In a few seconds (depending on the hardware), the prediction will come up in an interface. 
     </br></br>
     ![pred01](assets/pred_01.png)
-    <p style="text-align:center">Almost correct prediction</p>
+    <p style="text-align:center">Figure: Almost correct prediction</p>
 
     </br>
 
     ![pred02](assets/pred_02.png)
-    <p style="text-align:center">Correct prediction</p>
+    <p style="text-align:center">Figure: Correct prediction</p>
 
 
 ## Installation
