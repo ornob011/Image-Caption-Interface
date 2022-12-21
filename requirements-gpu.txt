@@ -1,0 +1,7 @@
+Flask
+numpy
+Pillow
+tensorflow-gpu
+pybase64
+gunicorn
+uvicorn
