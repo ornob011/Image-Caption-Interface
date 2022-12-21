@@ -93,7 +93,7 @@ To install this application, follow these steps:
    ```
    gunicorn app:app 
    ```
-The application should now be running on your local machine.
+The application should now be running on your local machine at [http://localhost:5000/](http://localhost:5000/) or [http://localhost:8888/](http://localhost:8888/). Check the terminal to be sure.
 
 
 ## Contributing
